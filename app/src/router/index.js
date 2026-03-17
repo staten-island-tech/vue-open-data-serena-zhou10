@@ -1,9 +1,16 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createRouter, createWebHistory } from 'vue-router'
+import SquirrelData from '../components/SquirrelData.vue'
 
-const app = createApp(App)
+const routes = [
+    {
+        path: '/vue-lists',
+        component: SquirrelData,
+    },
+]
 
-app.use(router)
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+})
 
-app.mount('#app')
+export default router

@@ -1,11 +1,18 @@
 <template>
   <div>
-    <RouterLink to="/vue-lists"> Vue Lists </RouterLink>
+    <h1>Squirrel</h1>
+
+    <RouterLink to="/vue-lists">Go to Squirrels</RouterLink>
 
     <RouterView />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  text-align: center;
+}
+</style>
