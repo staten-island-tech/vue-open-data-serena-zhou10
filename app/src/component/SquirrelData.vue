@@ -9,8 +9,8 @@ import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const squirrel = ref(null)
-async function getSquirrel (id) {
-  const response = await fetch(`https://data.cityofnewyork.us/api/v3/views/vfnx-vebw/query.json`)
+async function getSquirrel(id) {
+  const response = await fetch(`https://data.cityofnewyork.us/resource/vfnx-vebw.json`)
   const data = await response.json()
   pokemon.value = data
 }
