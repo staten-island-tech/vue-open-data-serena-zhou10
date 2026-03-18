@@ -17,6 +17,7 @@ const { squirrel, id } = props
 
 <style scoped>
 .card {
+  font-family: 'Poppins', sans-serif;
   border: 1px solid black;
   padding: 10px;
   width: 150px;

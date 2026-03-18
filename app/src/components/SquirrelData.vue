@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h2>Squirrel List</h2>
+    <h2 class="list__title">Squirrel List</h2>
 
     <div v-if="squirrels.length">
-      <SquirrelCard v-for="(squirrel, index) in squirrels" :key="index" :squirrel="squirrel" :id="index" />
+      <SquirrelCard
+        v-for="(squirrel, index) in squirrels"
+        :key="index"
+        :squirrel="squirrel"
+        :id="index"
+      />
     </div>
 
     <p v-else>Loading...</p>
@@ -17,9 +22,7 @@ import SquirrelCard from './SquirrelCard.vue'
 const squirrels = ref([])
 
 async function getSquirrels() {
-  const response = await fetch(
-    'https://data.cityofnewyork.us/resource/vfnx-vebw.json'
-  )
+  const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json')
   const data = await response.json()
 
   squirrels.value = data.slice(0, 101)
@@ -31,7 +34,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.list__title {
+  font-family: 'Poppins', sans-serif;
+}
+
 div {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
