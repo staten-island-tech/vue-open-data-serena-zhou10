@@ -25,7 +25,7 @@ async function getSquirrels() {
   const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json')
   const data = await response.json()
 
-  squirrels.value = data.slice(0, 101)
+  squirrels.value = data.slice(0, 1000)
 }
 
 onMounted(() => {

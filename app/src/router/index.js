@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SquirrelData from '../components/SquirrelData.vue'
 
+
 const routes = [
     {
         path: '/vue-lists',

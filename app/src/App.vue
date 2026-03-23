@@ -3,12 +3,11 @@
     <h1>Squirrel</h1>
 
     <RouterLink class="router__link" to="/vue-lists">Go to Squirrels</RouterLink>
-
     <RouterView />
   </div>
 </template>
 
-<script setup></script>
+<script></script>
 
 <style scoped>
 h1 {
