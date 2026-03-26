@@ -36,6 +36,8 @@ onMounted(() => {
 <style scoped>
 .list__title {
   font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
 }
 
 div {

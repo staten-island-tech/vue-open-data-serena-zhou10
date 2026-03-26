@@ -2,9 +2,9 @@
   <div>
     <div class="router">
       <RouterLink class="router__link" to="/vue-lists">NYC Squirrel Data</RouterLink>
+      <RouterLink class="router__link" to="/vue-chart">Squirrel Chart</RouterLink>
     </div>
     <RouterView />
-    <h1>Squirrel Data</h1>
   </div>
 </template>
 
