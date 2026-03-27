@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../components/Home.vue'
 import SquirrelData from '../components/SquirrelData.vue'
 import BarChart from '../components/BarChart.vue'
+import PieChart from '../components/PieChart.vue'
+import FilterChart from '../components/SquirrelFilter.vue'
 
 const routes = [
   {
     path: '/',
-    redirect: '/vue-chart',
+    component: Home,
   },
   {
     path: '/vue-lists',
@@ -14,6 +17,14 @@ const routes = [
   {
     path: '/vue-chart',
     component: BarChart,
+  },
+  {
+    path: '/vue-pie',
+    component: PieChart,
+  },
+  {
+    path: '/vue-filter',
+    component: FilterChart,
   },
 ]
 

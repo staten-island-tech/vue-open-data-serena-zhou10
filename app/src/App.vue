@@ -1,10 +1,17 @@
 <template>
   <div>
-    <div class="router">
-      <RouterLink class="router__link" to="/vue-lists">NYC Squirrel Data</RouterLink>
-      <RouterLink class="router__link" to="/vue-chart">Squirrel Chart</RouterLink>
-    </div>
-    <RouterView />
+    <header>
+      <nav class="router">
+        <RouterLink class="router__link" to="/">Home</RouterLink>
+        <RouterLink class="router__link" to="/vue-lists">NYC Squirrel Data</RouterLink>
+        <RouterLink class="router__link" to="/vue-chart">Squirrel Locations</RouterLink>
+        <RouterLink class="router__link" to="/vue-pie">Squirrel Fur Colors</RouterLink>
+        <RouterLink class="router__link" to="/vue-filter">Squirrel Locations by Color</RouterLink>
+      </nav>
+    </header>
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
 

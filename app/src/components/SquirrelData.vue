@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2 class="list__title">Squirrel List</h2>
+    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
 
     <div v-if="squirrels.length">
       <SquirrelCard
@@ -20,12 +21,17 @@ import { onMounted, ref } from 'vue'
 import SquirrelCard from './SquirrelCard.vue'
 
 const squirrels = ref([])
+const errorMessage = ref('')
 
 async function getSquirrels() {
-  const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json')
-  const data = await response.json()
-
-  squirrels.value = data.slice(0, 1000)
+  try {
+    const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json')
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+    const data = await response.json()
+    squirrels.value = data.slice(0, 1000)
+  } catch (error) {
+    errorMessage.value = `Failed to load squirrels: ${error.message}`
+  }
 }
 
 onMounted(() => {
@@ -46,5 +52,10 @@ div {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p v-if="error" class="error">{{ error }}</p>
     <p>Squirrels loaded: {{ squirrels.length }}</p>
     <div v-if="squirrels.length" class="chart__container">
       <Bar :options="chartOptions" :data="chartData" />
@@ -35,26 +36,28 @@ export default {
     }
   },
   computed: {
-    chartData() {
-      const colorCounts = {}
+  chartData() {
+    const locationCounts = {}
 
-      for (const squirrel of this.squirrels) {
-        const color = squirrel.primary_fur_color || 'Unknown'
-        colorCounts[color] = (colorCounts[color] || 0) + 1
-      }
+    for (const squirrel of this.squirrels) {
+      const location = squirrel.location || 'Unknown'
+      locationCounts[location] = (locationCounts[location] || 0) + 1
+    }
 
-      return {
-        labels: Object.keys(colorCounts),
-        datasets: [
-          {
-            label: 'Fur Color Count',
-            data: Object.values(colorCounts),
-            backgroundColor: ['#e0d7cc', '#a8a8a8', '#c68642', '#2c2c2c'],
-          },
-        ],
-      }
-    },
+    const colors = ['#a8a8a8', '#c68642', '#2c2c2c', '#e0d7cc']
+
+    return {
+      labels: Object.keys(locationCounts),
+      datasets: [
+        {
+          label: 'Location Count',
+          data: Object.values(locationCounts),
+          backgroundColor: Object.keys(locationCounts).map((_, i) => colors[i % colors.length]),
+        },
+      ],
+    }
   },
+},
   async mounted() {
     const response = await fetch('https://data.cityofnewyork.us/resource/vfnx-vebw.json')
     const data = await response.json()
