@@ -43,15 +43,14 @@ export default {
     return {
       squirrels: [],
       selectedColor: '',
+      error: null,
+      formError: null,
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        error: null,
-        formError: null,
       },
     }
   },
-
   methods: {
     handleSearch() {
       if (!this.selectedColor) {
@@ -71,14 +70,11 @@ export default {
     },
     chartData() {
       const locationCounts = {}
-
       for (const squirrel of this.filteredSquirrels) {
         const location = squirrel.location || 'Unknown'
         locationCounts[location] = (locationCounts[location] || 0) + 1
       }
-
       const colors = ['#a8a8a8', '#c68642', '#2c2c2c', '#e0d7cc']
-
       return {
         labels: Object.keys(locationCounts),
         datasets: [
